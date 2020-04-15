@@ -2,7 +2,7 @@ package andr.springframework.services;
 
 import andr.springframework.domain.City;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class CityServiceTest {
         city.setName("Porto");
         cityService.saveCity(city);
         City getCity = cityService.getCityById(1);
-        assertEquals(getCity, city);
+        assertEquals(getCity.getName(), city.getName());
     }
 
 }
