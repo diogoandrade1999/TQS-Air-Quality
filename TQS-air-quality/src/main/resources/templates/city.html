@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+    <div class="container">
+        <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+        <div class="jumbotron">
+            <h4 id="data_from" class="text-info" th:text="${msg}"></h4>
+            <div th:if="${city != null}">
+                <h2 th:text="'Air Quality '+${city.getName()}"></h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th th:if="${city.getNo2()}">NO2</th>
+                        <th th:if="${city.getO3()}">O3</th>
+                        <th th:if="${city.getPm10()}">PM10</th>
+                        <th th:if="${city.getSo2()}">SO2</th>
+                    </tr>
+                    <tr>
+                        <td th:if="${city.getNo2()}" th:text="${city.getNo2()}"
+                            th:style="${city.getNo2() < 6 ? 'background-color: #145A32' :
+                                        (city.getNo2() < 12 ? 'background-color: #7DCEA0' :
+                                        (city.getNo2() < 18 ? 'background-color: #F7DC6F' :
+                                        (city.getNo2() < 24 ? 'background-color: #E67E22' :
+                                        'background-color: red' )))}"></td>
+                        <td th:if="${city.getO3()}" th:text="${city.getO3()}"
+                            th:style="${city.getO3() < 20 ? 'background-color: #145A32' :
+                                        (city.getO3() < 35 ? 'background-color: #7DCEA0' :
+                                        (city.getO3() < 50 ? 'background-color: #F7DC6F' :
+                                        (city.getO3() < 120 ? 'background-color: #E67E22' :
+                                        'background-color: red' )))}"></td>
+                        <td th:if="${city.getPm10()}" th:text="${city.getPm10()}"
+                            th:style="${city.getPm10() < 5 ? 'background-color: #145A32' :
+                                        (city.getPm10() < 7 ? 'background-color: #7DCEA0' :
+                                        (city.getPm10() < 8.5 ? 'background-color: #F7DC6F' :
+                                        (city.getPm10() < 10 ? 'background-color: #E67E22' :
+                                        'background-color: red' )))}"></td>
+                        <td th:if="${city.getSo2()}" th:text="${city.getSo2()}"
+                            th:style="${city.getSo2() < 1.4 ? 'background-color: #145A32' :
+                                        (city.getSo2() < 2.1 ? 'background-color: #7DCEA0' :
+                                        (city.getSo2() < 3.5 ? 'background-color: #F7DC6F' :
+                                        (city.getSo2() < 5 ? 'background-color: #E67E22' :
+                                        'background-color: red' )))}"></td>
+                    </tr>
+                </table>
+                <table class="table table-striped">
+                    <tr>
+                        <th th:if="${city.getDew()}">Dew</th>
+                        <th th:if="${city.getHumidity()}">Humidity</th>
+                        <th th:if="${city.getPressure()}">Pressure</th>
+                        <th th:if="${city.getTemperature()}">Temperature</th>
+                        <th th:if="${city.getWind()}">Wind</th>
+                    </tr>
+                    <tr>
+                        <td th:if="${city.getDew()}" th:text="${city.getDew()}"></td>
+                        <td th:if="${city.getHumidity()}" th:text="${city.getHumidity()}"></td>
+                        <td th:if="${city.getPressure()}" th:text="${city.getPressure()}"></td>
+                        <td th:if="${city.getTemperature()}" th:text="${city.getTemperature()}"></td>
+                        <td th:if="${city.getWind()}" th:text="${city.getWind()}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

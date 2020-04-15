@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+    <div class="container">
+        <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+        <div class="jumbotron">
+            <h4 class="text-info" th:text="${msg}"></h4>
+            <div th:if="${not #lists.isEmpty(cities)}">
+                <h2>Cities List</h2>
+                <table class="table" style="border-spacing: 10px;">
+                    <tr th:each="city : ${cities}">
+                        <td>
+                            <a class="btn btn-info" style="width: 100%;"
+                               th:href="@{'/city/'+${city.getUid()}+'/'+${city.getStation().getName()}}"
+                               th:text="${city.getStation().getName()}">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

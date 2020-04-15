@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="navbar-brand"><a class="btn btn-light" th:href="@{/}" id="home">Home</a></div>
+        <div class="navbar-brand"><a class="btn btn-light" th:href="@{/statistics}" id="statistics">Statistics</a></div>
+        <div class="navbar-brand" style="float: right; width: 80%;">
+            <form class="form-inline" th:object="${city_search}" th:action="@{/cities}" method="post">
+                <input class="form-control" id="search" type="search" placeholder="Search City" th:field="*{name}" style="width: 80%">
+                <button class="btn btn-outline-light" id="btn_search" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</div>
+</html>

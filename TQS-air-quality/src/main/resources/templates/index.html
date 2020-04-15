@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+    <div class="container">
+        <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+        <div class="jumbotron">
+            <div class="row d-flex justify-content-center">
+                <h2>Air Quality</h2>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <h3>Spring Boot Web App</h3>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <img src="../../static/images/OG-Spring.png" width="600"
+                     th:src="@{/images/OG-Spring.png}"/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

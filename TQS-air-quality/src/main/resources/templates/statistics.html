@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+    <div class="container">
+        <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+        <div class="jumbotron">
+            <h2>Statistics</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Number of Requests</th>
+                    <th>Hits</th>
+                    <th>Misses</th>
+                    <th>Number of Saved Cities</th>
+                </tr>
+                <tr>
+                    <td th:text="${statistics.getCount_requests()}"></td>
+                    <td th:text="${statistics.getHits()}"></td>
+                    <td th:text="${statistics.getMisses()}"></td>
+                    <td th:text="${count}"></td>
+                </tr>
+            </table>
+            <div th:if="${not #lists.isEmpty(cities)}">
+                <h2>Saved Cities List</h2>
+                <table class="table" style="border-spacing: 10px;">
+                    <tr th:each="c, i : ${cities}" th:if="${i.index % 2} == 0">
+                        <td th:each="c, j : ${cities}"
+                            th:if="${j.index lt i.index + 2 and j.index ge i.index}">
+                            <a class="btn btn-primary" style="width: 100%;"
+                               th:href="@{'/city/'+${c.getId()}+'/'+${c.getName()}}"
+                               th:text="${c.getName()}">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
